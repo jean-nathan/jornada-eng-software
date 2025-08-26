@@ -36,13 +36,12 @@ def generate_mermaid_mindmap(root_path, max_depth=3):
     Returns:
         str: Código Mermaid para o mapa mental
     """
-    def build_tree(path, current_depth=0, parent_path="root"):
-        """Constrói recursivamente a árvore de pastas com hierarquia correta."""
+    def build_tree(path, current_depth=0, indent="    "):
+        """Constrói recursivamente a árvore de pastas com indentação correta para mindmap."""
         if current_depth > max_depth:
             return []
         
-        nodes = []
-        connections = []
+        tree = []
         
         try:
             items = []
@@ -61,54 +60,45 @@ def generate_mermaid_mindmap(root_path, max_depth=3):
             # Ordena itens: pastas primeiro, depois arquivos
             items.sort(key=lambda x: (not x[2], x[0].lower()))
             
-            for i, (item_name, item_path, is_dir) in enumerate(items):
+            for item_name, item_path, is_dir in items:
                 sanitized_name = sanitize_mermaid_label(item_name)
-                node_id = f"{parent_path}_{sanitized_name}_{i}"
                 
                 if is_dir:
-                    # Adiciona o nó do diretório
-                    nodes.append(f"  {node_id}[{sanitized_name}]")
-                    # Conecta ao pai
-                    connections.append(f"  {parent_path} --> {node_id}")
-                    
-                    # Processa subdiretórios
-                    sub_nodes, sub_connections = build_tree(item_path, current_depth + 1, node_id)
-                    nodes.extend(sub_nodes)
-                    connections.extend(sub_connections)
+                    # Para pastas, adiciona sem parênteses
+                    tree.append(f"{indent}{sanitized_name}")
+                    # Processa subdiretórios com indentação aumentada
+                    subtree = build_tree(item_path, current_depth + 1, indent + "  ")
+                    tree.extend(subtree)
                 else:
-                    # Adiciona arquivos
-                    file_icon = "📄" if item_name.endswith('.md') else "📁"
-                    nodes.append(f"  {node_id}[{file_icon} {sanitized_name}]")
-                    connections.append(f"  {parent_path} --> {node_id}")
+                    # Para arquivos, adiciona com descrição entre parênteses
+                    file_extension = item_name.split('.')[-1].upper() if '.' in item_name else 'FILE'
+                    tree.append(f"{indent}{sanitized_name}")
+                    tree.append(f"{indent}  ({file_extension})")
         
         except PermissionError:
-            error_node = f"{parent_path}_error"
-            nodes.append(f"  {error_node}[⚠️ Acesso_Negado]")
-            connections.append(f"  {parent_path} --> {error_node}")
+            tree.append(f"{indent}Acesso_Negado")
+            tree.append(f"{indent}  (ERRO)")
         except Exception as e:
-            error_node = f"{parent_path}_error"
-            error_msg = str(e)[:20].replace(' ', '_')
-            nodes.append(f"  {error_node}[❌ {error_msg}]")
-            connections.append(f"  {parent_path} --> {error_node}")
+            error_msg = str(e)[:15].replace(' ', '_')
+            tree.append(f"{indent}Erro_{error_msg}")
+            tree.append(f"{indent}  (ERRO)")
         
-        return nodes, connections
+        return tree
     
     # Gera o nome raiz sanitizado
-    root_name = sanitize_mermaid_label(os.path.basename(root_path) or "Repositório")
+    root_name = sanitize_mermaid_label(os.path.basename(root_path) or "Repositorio")
     
     # Constrói a árvore a partir da raiz
-    nodes, connections = build_tree(root_path)
+    tree_items = build_tree(root_path)
     
-    # Monta o código Mermaid final usando flowchart em vez de mindmap
-    # O flowchart é mais compatível com GitHub e permite melhor controle da hierarquia
-    mermaid_code = [
-        "flowchart TD",
-        f"  root[🗂️ {root_name}]"
+    # Monta o código Mermaid final usando a sintaxe correta de mindmap
+    mindmap_code = [
+        "mindmap",
+        f"  root(({root_name}))"
     ]
-    mermaid_code.extend(nodes)
-    mermaid_code.extend(connections)
+    mindmap_code.extend(tree_items)
     
-    return "\n".join(mermaid_code)
+    return "\n".join(mindmap_code)
 
 def clean_old_mindmaps(root_path):
     """
@@ -168,7 +158,7 @@ Este é um mapa mental interativo da estrutura de pastas. Utilize-o para navegar
 
 - **Caminho:** `{path}`
 - **Gerado em:** {datetime.datetime.now().strftime('%d/%m/%Y às %H:%M:%S')}
-- **Ferramenta:** Gerador de Mapas Mentais v1.3
+- **Ferramenta:** Gerador de Mapas Mentais v1.4
 
 ## 🔍 Como usar
 
