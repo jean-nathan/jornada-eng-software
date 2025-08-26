@@ -11,15 +11,13 @@ mindmap
     anotacoes
     exercicios
     simulados
-    README.md
-      (MD)
 ```
 
 ## 📋 Informações
 
 - **Caminho:** `/app/2025-2-Semestre/paradigmas-de-linguagens-de-programacao-em-python`
-- **Gerado em:** 26/08/2025 às 01:54:48
-- **Ferramenta:** Gerador de Mapas Mentais v1.4
+- **Gerado em:** 26/08/2025 às 02:01:19
+- **Ferramenta:** Gerador de Mapas Mentais v1.5
 
 ## 🔍 Como usar
 

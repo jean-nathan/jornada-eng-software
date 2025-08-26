@@ -28,6 +28,7 @@ def sanitize_mermaid_label(text):
 def generate_mermaid_mindmap(root_path, max_depth=3):
     """
     Gera um mapa mental em formato Mermaid baseado na estrutura de pastas.
+    Mostra apenas arquivos dentro das pastas 'anotacoes'.
     
     Args:
         root_path (str): Caminho raiz para análise
@@ -52,36 +53,48 @@ def generate_mermaid_mindmap(root_path, max_depth=3):
                     # Ignora pastas ocultas e de sistema
                     if not item.startswith('.') and item not in ['__pycache__', 'node_modules', '.git']:
                         items.append((item, item_path, True))  # True = é diretório
-                elif os.path.isfile(item_path) and current_depth < 2:
-                    # Inclui apenas alguns tipos de arquivo importantes
-                    if item.endswith(('.md', '.py', '.txt', '.pdf', '.docx', '.pptx')):
-                        items.append((item, item_path, False))  # False = é arquivo
             
-            # Ordena itens: pastas primeiro, depois arquivos
-            items.sort(key=lambda x: (not x[2], x[0].lower()))
+            # Ordena itens: pastas primeiro
+            items.sort(key=lambda x: x[0].lower())
             
             for item_name, item_path, is_dir in items:
                 sanitized_name = sanitize_mermaid_label(item_name)
                 
                 if is_dir:
-                    # Para pastas, adiciona sem parênteses
+                    # Adiciona a pasta
                     tree.append(f"{indent}{sanitized_name}")
-                    # Processa subdiretórios com indentação aumentada
-                    subtree = build_tree(item_path, current_depth + 1, indent + "  ")
-                    tree.extend(subtree)
-                else:
-                    # Para arquivos, adiciona com descrição entre parênteses
-                    file_extension = item_name.split('.')[-1].upper() if '.' in item_name else 'FILE'
-                    tree.append(f"{indent}{sanitized_name}")
-                    tree.append(f"{indent}  ({file_extension})")
+                    
+                    # Se a pasta é "anotacoes", lista os arquivos dentro dela
+                    if item_name.lower() == 'anotacoes':
+                        try:
+                            files_in_anotacoes = []
+                            for file_item in os.listdir(item_path):
+                                file_path = os.path.join(item_path, file_item)
+                                if os.path.isfile(file_path):
+                                    # Inclui arquivos relevantes para estudos
+                                    if file_item.endswith(('.md', '.txt', '.pdf', '.docx', '.pptx', '.xlsx')):
+                                        files_in_anotacoes.append(file_item)
+                            
+                            # Ordena os arquivos alfabeticamente
+                            files_in_anotacoes.sort()
+                            
+                            # Adiciona os arquivos ao mapa mental
+                            for file_name in files_in_anotacoes:
+                                sanitized_file = sanitize_mermaid_label(file_name.replace('.', '_'))
+                                tree.append(f"{indent}  {sanitized_file}")
+                                
+                        except (PermissionError, OSError):
+                            tree.append(f"{indent}  Acesso_Negado")
+                    else:
+                        # Para outras pastas, continua a recursão normalmente (sem mostrar arquivos)
+                        subtree = build_tree(item_path, current_depth + 1, indent + "  ")
+                        tree.extend(subtree)
         
         except PermissionError:
             tree.append(f"{indent}Acesso_Negado")
-            tree.append(f"{indent}  (ERRO)")
         except Exception as e:
             error_msg = str(e)[:15].replace(' ', '_')
             tree.append(f"{indent}Erro_{error_msg}")
-            tree.append(f"{indent}  (ERRO)")
         
         return tree
     
@@ -158,7 +171,7 @@ Este é um mapa mental interativo da estrutura de pastas. Utilize-o para navegar
 
 - **Caminho:** `{path}`
 - **Gerado em:** {datetime.datetime.now().strftime('%d/%m/%Y às %H:%M:%S')}
-- **Ferramenta:** Gerador de Mapas Mentais v1.4
+- **Ferramenta:** Gerador de Mapas Mentais v1.5
 
 ## 🔍 Como usar
 

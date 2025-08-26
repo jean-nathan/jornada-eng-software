@@ -11,6 +11,8 @@ mindmap
       arquitetura-de-computadores
         anki
         anotacoes
+          01-introducao-arquitetura_md
+          02-memoria-ram-cache_md
         exercicios
         simulados
       desenv-web-em-html5-css-jav...
@@ -33,28 +35,14 @@ mindmap
         anotacoes
         exercicios
         simulados
-      README.md
-        (MD)
     anki_prompts
-      arquitetura-de-computadores...
-        (TXT)
-    generate_anki_prompts.py
-      (PY)
-    generate_mindmap.py
-      (PY)
-    README-Docker.md
-      (MD)
-    README-Setup-Semestre.md
-      (MD)
-    README.md
-      (MD)
 ```
 
 ## 📋 Informações
 
 - **Caminho:** `/app`
-- **Gerado em:** 26/08/2025 às 01:54:48
-- **Ferramenta:** Gerador de Mapas Mentais v1.4
+- **Gerado em:** 26/08/2025 às 02:01:19
+- **Ferramenta:** Gerador de Mapas Mentais v1.5
 
 ## 🔍 Como usar
 

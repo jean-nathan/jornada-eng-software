@@ -9,23 +9,17 @@ mindmap
   root((arquitetura-de-computadores))
     anki
     anotacoes
-      01-introducao-arquitetura.md
-        (MD)
-      02-memoria-ram-cache.md
-        (MD)
+      01-introducao-arquitetura_md
+      02-memoria-ram-cache_md
     exercicios
-      lista-01-instrucoes-e-ciclo...
-        (MD)
     simulados
-    README.md
-      (MD)
 ```
 
 ## 📋 Informações
 
 - **Caminho:** `/app/2025-2-Semestre/arquitetura-de-computadores`
-- **Gerado em:** 26/08/2025 às 01:54:48
-- **Ferramenta:** Gerador de Mapas Mentais v1.4
+- **Gerado em:** 26/08/2025 às 02:01:19
+- **Ferramenta:** Gerador de Mapas Mentais v1.5
 
 ## 🔍 Como usar
 
