@@ -5,32 +5,30 @@ Este é um mapa mental interativo da estrutura de pastas. Utilize-o para navegar
 ## 📊 Estrutura do Diretório
 
 ```mermaid
-mindmap
-  root((introducao-a-programacao-de...))
-  anki
-  anotacoes
-  exercicios
-  simulados
-  📄 README.md
+flowchart TD
+  root[🗂️ introducao-a-programacao-de...]
+  root_anki_0[anki]
+  root_anotacoes_1[anotacoes]
+  root_exercicios_2[exercicios]
+  root_simulados_3[simulados]
+  root_README.md_4[📄 README.md]
+  root --> root_anki_0
+  root --> root_anotacoes_1
+  root --> root_exercicios_2
+  root --> root_simulados_3
+  root --> root_README.md_4
 ```
 
 ## 📋 Informações
 
 - **Caminho:** `/app/2025-2-Semestre/introducao-a-programacao-de-computadores`
-- **Gerado em:** 26/08/2025 às 00:41:14
-- **Ferramenta:** Gerador de Mapas Mentais v1.0
+- **Gerado em:** 26/08/2025 às 01:47:34
+- **Ferramenta:** Gerador de Mapas Mentais v1.3
 
 ## 🔍 Como usar
 
-1. **Visualização:** O mapa mental mostra a hierarquia de pastas e arquivos principais
-2. **Navegação:** Use a estrutura para localizar rapidamente o conteúdo desejado
-3. **Arquivos importantes:** Documentos Markdown (📄) e outros arquivos relevantes são destacados
-
-## 💡 Dicas
-
-- Pastas são representadas por nós no mapa mental
-- Arquivos importantes (.md, .py, .pdf, etc.) são mostrados com ícones específicos
-- A profundidade máxima de visualização é limitada para melhor legibilidade
+1. **Visualização:** O mapa mental mostra a hierarquia de pastas e arquivos principais.
+2. **Navegação:** Use a estrutura para localizar rapidamente o conteúdo desejado.
 
 ---
 *Mapa mental gerado automaticamente - Não edite manualmente este arquivo*
