@@ -1,0 +1,6 @@
+# Arquivos ignorados pelo Git
+__pycache__/
+.DS_Store
+*.swp
+*.bak
+

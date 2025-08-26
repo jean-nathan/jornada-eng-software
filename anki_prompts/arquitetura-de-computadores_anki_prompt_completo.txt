@@ -1,0 +1,151 @@
+# 🎴 Prompt Completo para Geração de Flashcards Anki
+
+## 🎯 Objetivo
+Você é um especialista em educação e flashcards do Anki. Sua tarefa é criar um conjunto completo de flashcards de alta qualidade para a disciplina de **"Arquitetura De Computadores"**, do **2025 2 semestre**.
+
+## 📚 Informações da Disciplina
+- **Disciplina:** Arquitetura De Computadores
+- **Período:** 2025 2 semestre
+- **Total de arquivos processados:** 3
+- **Total de conteúdo:** 2,857 caracteres
+- **Gerado em:** 26/08/2025 às 00:53:34
+
+## 🎯 Instruções Específicas
+
+### 📋 Formato dos Flashcards
+Use EXATAMENTE este formato para cada flashcard:
+
+```
+Pergunta: [Sua pergunta clara e concisa]
+Resposta: [Resposta objetiva e completa]
+
+---
+```
+
+### 🔍 Critérios de Qualidade
+1. **Clareza:** Cada pergunta deve focar em UM conceito específico
+2. **Concisão:** Respostas diretas, sem redundâncias
+3. **Relevância:** Baseado exclusivamente no conteúdo fornecido abaixo
+4. **Progressividade:** Do básico ao avançado
+5. **Aplicabilidade:** Inclua exemplos práticos quando disponíveis no material
+
+### 📊 Quantidade e Estratégia
+- **Meta:** 20-40 flashcards no total (baseado na quantidade de conteúdo)
+- **Priorize:** Conceitos que aparecem múltiplas vezes no material
+- **Inclua:** Definições, procedimentos, comparações e aplicações práticas
+- **Evite:** Perguntas muito específicas ou decorativas
+
+### 🎲 Tipos de Perguntas
+- **Definições:** "O que é...?", "Defina...", "Qual o conceito de...?"
+- **Comparações:** "Qual a diferença entre X e Y?", "Compare..."
+- **Procedimentos:** "Como fazer...?", "Quais os passos para...?"
+- **Aplicações:** "Quando usar...?", "Em que situação...?", "Para que serve...?"
+- **Análise:** "Por que...?", "Qual a consequência de...?", "Qual a importância de...?"
+
+## 💡 Sugestões de Tópicos
+  - Conceitos fundamentais de Arquitetura De Computadores
+  - Definições e terminologias importantes
+  - Métodos e técnicas principais
+  - Aplicações práticas e exemplos
+  - Resolução de problemas e exercícios
+  - Casos especiais e situações excepcionais
+
+## 📝 Instruções Críticas de Saída
+1. **APENAS FLASHCARDS:** Forneça SOMENTE a lista de flashcards, nada mais
+2. **SEM TEXTO ADICIONAL:** Não inclua introduções, explicações ou comentários
+3. **FORMATO EXATO:** Use exatamente o formato especificado acima
+4. **SEPARAÇÃO CLARA:** Use "---" entre cada flashcard
+5. **BASE NO CONTEÚDO:** Use APENAS as informações fornecidas abaixo
+
+---
+
+# 📖 CONTEÚDO COMPLETO DA DISCIPLINA
+
+
+## 📊 Resumo do Conteúdo Disponível
+- **Total de arquivos processados:** 3
+- **Total de caracteres:** 2,857
+- **Arquivos por categoria:**
+  - Anotações: 2
+  - Exercícios: 1
+  - Simulados: 0
+
+
+## 📝 Anotações de Aula
+*Total de 2 arquivo(s)*
+
+### 📄 01-introducao-arquitetura.md
+```
+# Introdução à Arquitetura de Computadores
+
+### O que é Arquitetura?
+
+A arquitetura de computadores é o projeto conceitual e a estrutura operacional fundamental de um sistema de computador. É a "planta" que define como o hardware e o software interagem.
+
+### Modelo de Von Neumann
+
+* **Definição:** Um modelo de arquitetura de computador que se baseia em uma unidade de processamento central (CPU) e uma memória de armazenamento única.
+* **Componentes Principais:**
+    * **CPU (Unidade Central de Processamento):** Cérebro do computador. Contém a Unidade Lógica e Aritmética (ULA) e a Unidade de Controle (UC).
+    * **Memória:** Armazena dados e instruções.
+    * **Barramentos:** Canais de comunicação entre os componentes (dados, endereço e controle).
+* **Ciclo de Instrução (Fetch-Decode-Execute):**
+    1.  **Fetch (Busca):** A UC busca a próxima instrução da memória.
+    2.  **Decode (Decodificação):** A UC interpreta a instrução.
+    3.  **Execute (Execução):** A ULA executa a instrução.
+
+### Arquitetura Harvard
+
+* **Diferença:** Possui memórias separadas para instruções e para dados, permitindo que a busca e a execução de instruções ocorram simultaneamente.
+* **Vantagem:** Aumento de performance devido ao paralelismo.
+* **Uso:** Microcontroladores, processadores de sinais digitais.
+```
+
+### 📄 02-memoria-ram-cache.md
+```
+# Hierarquia de Memória
+
+### Hierarquia
+
+* **Registradores:** Mais rápidos, menor capacidade. Localizados na CPU.
+* **Cache L1, L2, L3:** Memórias pequenas e extremamente rápidas. Armazenam cópias dos dados mais usados da RAM para a CPU.
+* **RAM (Memória de Acesso Aleatório):** Memória principal. Armazena dados e programas em execução. Volátil (apaga ao desligar).
+* **Disco Rígido (SSD/HDD):** Memória secundária. Lenta, grande capacidade e não-volátil.
+
+### Memória Cache
+
+* **O que é:** Uma memória muito rápida, localizada entre a CPU e a RAM, que armazena dados e instruções frequentemente acessados.
+* **Princípio de Localidade:** A cache se baseia no princípio de que um programa tende a reusar dados e instruções que foram acessados recentemente (localidade temporal) ou que estão próximos de dados recentemente acessados (localidade espacial).
+
+### Memória RAM
+
+* **Tipo:** DDR4, DDR5 (SDRAM).
+* **Latência:** Tempo que a CPU leva para receber os dados solicitados da RAM.
+```
+
+
+## 🔧 Exercícios e Práticas
+*Total de 1 arquivo(s)*
+
+### 📄 lista-01-instrucoes-e-ciclos.md
+```
+# Lista de Exercícios 01: Ciclo de Instrução e Unidades
+
+1.  Explique em suas palavras cada uma das etapas do ciclo de instrução (Fetch, Decode, Execute).
+2.  Qual a principal função da Unidade de Controle (UC) e da Unidade Lógica e Aritmética (ULA) dentro da CPU?
+3.  Desenhe um diagrama simplificado do modelo de Von Neumann e do modelo de Harvard, destacando a principal diferença.
+4.  Considere um cenário onde a CPU precisa buscar a instrução 'ADDI R1, R2, 5' da memória. Descreva o caminho que essa instrução percorre no barramento de endereço e no barramento de dados.
+```
+
+
+---
+
+# ⚡ INSTRUÇÕES FINAIS
+
+Com base em TODO o conteúdo acima, crie agora os flashcards seguindo rigorosamente:
+- O formato especificado
+- Apenas informações do conteúdo fornecido
+- Foco em conceitos principais e aplicações práticas
+- Perguntas claras e respostas completas
+
+**IMPORTANTE:** Responda APENAS com os flashcards no formato especificado, sem qualquer texto adicional.

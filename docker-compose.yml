@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Serviço para gerar mapas mentais
+  mindmap-generator:
+    build: .
+    container_name: mindmap-generator
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python generate_mindmap.py
+    profiles:
+      - mindmap
+
+  # Serviço para gerar prompts Anki
+  anki-generator:
+    build: .
+    container_name: anki-generator
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python generate_anki_prompts.py
+    profiles:
+      - anki
+
+  # Serviço para executar ambos
+  all-scripts:
+    build: .
+    container_name: all-scripts
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: bash -c "python generate_mindmap.py && echo '✅ Mapas mentais gerados!' && python generate_anki_prompts.py && echo '✅ Prompts Anki gerados!'"
+    profiles:
+      - all
+
+  # Serviço para modo interativo/debug
+  debug:
+    build: .
+    container_name: scripts-debug
+    volumes:
+      - .:/app
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    command: bash
+    profiles:
+      - debug
